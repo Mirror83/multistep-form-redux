@@ -1,21 +1,41 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import CustomInput from "./CustomInput"
 import StepHeader from "./StepHeader"
 
+import { useForm } from "react-hook-form"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { PersonalInfo, updatePersonalInfo } from "./multiStepFormSlice"
+
 function Step1() {
+  const { register, handleSubmit } = useForm()
+
+  const personalInfo = useAppSelector(state => state.multiStepForm.personalInfo)
+
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
   return (
-    <div>
+    <>
       <StepHeader
         title="Personal info"
         description="Please provide your name, email address, and phone number. "
       />
-      <form action="">
+      <form
+        onSubmit={handleSubmit(data => {
+          console.log(data)
+          dispatch(updatePersonalInfo(data as PersonalInfo))
+          navigate("/step-2")
+        })}
+      >
         <CustomInput
           label="Name"
           type="text"
           name="name"
           id="name"
           placeholder="Stephen King"
+          register={register}
+          registerOptions={{ required: true }}
+          defaultValue={personalInfo.name}
         />
         <CustomInput
           label="Email"
@@ -23,6 +43,9 @@ function Step1() {
           name="email"
           id="email"
           placeholder="e.g stephenking@lorem.com"
+          register={register}
+          registerOptions={{ required: true }}
+          defaultValue={personalInfo.email}
         />
         <CustomInput
           label="Phone"
@@ -30,10 +53,13 @@ function Step1() {
           name="phone"
           id="phone"
           placeholder="e.g +1 234 567 890"
+          register={register}
+          registerOptions={{ required: true }}
+          defaultValue={personalInfo.phone}
         />
+        <button>Next</button>
       </form>
-      <Link to="/step-2">Next</Link>
-    </div>
+    </>
   )
 }
 
