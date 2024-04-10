@@ -1,4 +1,11 @@
-import { FieldValues, RegisterOptions, UseFormRegister } from "react-hook-form"
+import {
+  FieldError,
+  FieldErrorsImpl,
+  FieldValues,
+  Merge,
+  RegisterOptions,
+  UseFormRegister,
+} from "react-hook-form"
 
 interface CustomInputProps {
   name: string
@@ -9,6 +16,7 @@ interface CustomInputProps {
   placeholder?: string
   register: UseFormRegister<FieldValues>
   registerOptions?: RegisterOptions<FieldValues, string>
+  errors: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined
 }
 function CustomInput({
   name,
@@ -19,12 +27,23 @@ function CustomInput({
   defaultValue,
   register,
   registerOptions,
+  errors,
 }: CustomInputProps) {
   return (
     <div className="flex flex-col flex-wrap gap-1 my-4">
-      <label htmlFor={id}>{label}</label>
+      <div className="flex flex-wrap justify-between">
+        <label htmlFor={id} className="text-marine-blue font-bold">
+          {label}
+        </label>
+        {errors && (
+          <span className="text-strawberry-red">
+            {errors.message?.toString()}
+          </span>
+        )}
+      </div>
+
       <input
-        className="outline outline-1 p-2 rounded"
+        className="text-marine-blue outline outline-1 p-2 rounded"
         type={type}
         id={id}
         placeholder={placeholder}
