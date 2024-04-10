@@ -7,7 +7,11 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { PersonalInfo, updatePersonalInfo } from "./multiStepFormSlice"
 
 function Step1() {
-  const { register, handleSubmit } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
 
   const personalInfo = useAppSelector(state => state.multiStepForm.personalInfo)
 
@@ -21,6 +25,7 @@ function Step1() {
         description="Please provide your name, email address, and phone number. "
       />
       <form
+        id="personal-info-form"
         onSubmit={handleSubmit(data => {
           console.log(data)
           dispatch(updatePersonalInfo(data as PersonalInfo))
@@ -34,8 +39,9 @@ function Step1() {
           id="name"
           placeholder="Stephen King"
           register={register}
-          registerOptions={{ required: true }}
+          registerOptions={{ required: "Name is required!" }}
           defaultValue={personalInfo.name}
+          errors={errors.name}
         />
         <CustomInput
           label="Email"
@@ -44,8 +50,15 @@ function Step1() {
           id="email"
           placeholder="e.g stephenking@lorem.com"
           register={register}
-          registerOptions={{ required: true }}
+          registerOptions={{
+            required: "Email is required",
+            pattern: {
+              value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/,
+              message: "Invalid email address",
+            },
+          }}
           defaultValue={personalInfo.email}
+          errors={errors.email}
         />
         <CustomInput
           label="Phone"
@@ -54,10 +67,16 @@ function Step1() {
           id="phone"
           placeholder="e.g +1 234 567 890"
           register={register}
-          registerOptions={{ required: true }}
+          registerOptions={{
+            required: "Phone is required",
+            pattern: {
+              value: /^\+\d{1,3} \d{3} \d{3} \d{3}$/,
+              message: "Invalid phone number",
+            },
+          }}
           defaultValue={personalInfo.phone}
+          errors={errors.phone}
         />
-        <button>Next</button>
       </form>
     </>
   )
