@@ -1,19 +1,5 @@
 import { cn } from "@/lib/utils"
-import { useLocation } from "react-router-dom"
-
-function useStepNumber() {
-  const location = useLocation()
-  const locationParts = location.pathname.split("/")
-  const currentPage = locationParts[locationParts.length - 1]
-
-  if (currentPage === "") return 1
-
-  const stepNumber = parseInt(currentPage.split("-")[1])
-
-  if (stepNumber === 5) return 4
-
-  return stepNumber
-}
+import { useStepNumber } from "./hooks"
 
 const steps = ["Your info", "Select Plan", "Add-ons", "Summary"]
 
@@ -22,7 +8,7 @@ function Sidebar() {
 
   return (
     <div className="flex flex-col justify-between text-white rounded-lg relative">
-      <div className="flex flex-wrap flex-col gap-4 p-8 z-10">
+      <div className="flex flex-wrap flex-col gap-4 p-4 z-10">
         {steps.map((step, index) => (
           <SidebarComponent
             key={index}
@@ -58,15 +44,17 @@ function SidebarComponent({
     <div className="flex gap-4 items-center">
       <div
         className={cn(
-          "flex items-center justify-center w-8 h-8 rounded-full outline outline-white outline-1",
-          currentStep === step && "bg-pastel-blue text-black",
+          "flex items-center justify-center w-8 h-8 rounded-full",
+          currentStep === step
+            ? "bg-pastel-blue text-black outline-8 outline-pastel-blue"
+            : "outline outline-white outline-1",
         )}
       >
         {step}
       </div>
       <div className="uppercase">
-        <p className="font-light text-sm text-gray-200">Step {step}</p>
-        <p className="font-bold">{stepDescription}</p>
+        <p className="text-sm text-light-gray">Step {step}</p>
+        <p className="font-bold ">{stepDescription}</p>
       </div>
     </div>
   )
