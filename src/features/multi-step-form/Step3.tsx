@@ -47,9 +47,6 @@ function Step3() {
           />
         ))}
       </div>
-      <div>
-        <Link to="/step-2">Back</Link> <Link to="/step-4">Next</Link>
-      </div>
     </>
   )
 }
@@ -76,11 +73,11 @@ function AddOnCard({
           onChange={onSelect}
         />
         <div className="flex flex-col">
-          <h3 className="text-lg font-bold">{addOn.name}</h3>
-          <p className="text-gray-500">{addOn.description}</p>
+          <h3 className="text-lg font-bold text-marine-blue">{addOn.name}</h3>
+          <p className="text-cool-gray">{addOn.description}</p>
         </div>
       </div>
-      <p className="">
+      <p className="text-marine-blue">
         $
         {period === "monthly"
           ? addOn.monthlyPrice + "/mo"

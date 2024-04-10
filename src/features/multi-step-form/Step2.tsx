@@ -54,9 +54,6 @@ function Step2() {
           onChange={() => dispatch(togglePeriod())}
         />
       </div>
-      <div>
-        <Link to="/">Back</Link> <Link to="/step-3">Next</Link>
-      </div>
     </>
   )
 }
