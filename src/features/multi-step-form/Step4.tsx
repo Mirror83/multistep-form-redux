@@ -28,13 +28,15 @@ function Step4() {
       />
       <section className="bg-blue-100 p-4 rounded">
         <div className="w-full flex items-center justify-between border-b-2 py-4">
-          <div className="flex flex-col">
+          <div className="flex flex-col text-marine-blue">
             <p className="font-bold text-lg">
               {plan?.name} <span className="capitalize">({period})</span>
             </p>
-            <Link to="/step-2">Change</Link>
+            <Link to="/step-2" className="underline">
+              Change
+            </Link>
           </div>
-          <strong className="font-bold text-lg">
+          <strong className="font-bold text-lg text-marine-blue">
             $
             {period === "monthly"
               ? plan?.monthlyPrice + "/mo"
@@ -44,8 +46,8 @@ function Step4() {
         <div>
           {addOns.map(addOn => (
             <div className="flex justify-between py-2" key={addOn.name}>
-              <p className="text-gray-500">{addOn.name}</p>
-              <p>
+              <p className="text-cool-gray">{addOn.name}</p>
+              <p className="text-marine-blue">
                 +$
                 {period === "monthly"
                   ? addOn.monthlyPrice + "/mo"
@@ -58,16 +60,14 @@ function Step4() {
 
       <section className="p-4 flex justify-between">
         <div>
-          <p>Total (per {period === "monthly" ? "month" : "year"})</p>
+          <p className="text-cool-gray">
+            Total (per {period === "monthly" ? "month" : "year"})
+          </p>
         </div>
-        <strong className="font-bold text-2xl text-purple-600">
+        <strong className="font-bold text-2xl text-purplish-blue">
           ${`${total}${period === "monthly" ? "/mo" : "/yr"}`}
         </strong>
       </section>
-
-      <div>
-        <Link to="/step-3">Back</Link> <Link to="/step-5">Confirm</Link>
-      </div>
     </>
   )
 }
