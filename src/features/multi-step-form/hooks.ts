@@ -9,7 +9,5 @@ export function useStepNumber() {
 
   const stepNumber = parseInt(currentPage.split("-")[1])
 
-  if (stepNumber === 5) return 4
-
   return stepNumber
 }
