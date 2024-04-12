@@ -9,12 +9,14 @@ function Sidebar() {
   return (
     <div className="flex flex-col justify-between text-white rounded-lg relative">
       <div className="flex flex-wrap flex-col gap-4 p-4 z-10">
-        {steps.map((step, index) => (
+        {steps.map((stepDescription, index) => (
           <SidebarComponent
             key={index}
             step={index + 1}
-            stepDescription={step}
-            currentStep={stepNumber}
+            stepDescription={stepDescription}
+            isCurrentStep={
+              stepNumber === 5 && index === 3 ? true : stepNumber === index + 1
+            }
           />
         ))}
       </div>
@@ -32,20 +34,20 @@ function Sidebar() {
 interface SidebarComponentProps {
   step: number
   stepDescription: string
-  currentStep: number
+  isCurrentStep: boolean
 }
 
 function SidebarComponent({
   step,
   stepDescription,
-  currentStep,
+  isCurrentStep,
 }: SidebarComponentProps) {
   return (
     <div className="flex gap-4 items-center">
       <div
         className={cn(
           "flex items-center justify-center w-8 h-8 rounded-full",
-          currentStep === step
+          isCurrentStep
             ? "bg-pastel-blue text-black outline-8 outline-pastel-blue"
             : "outline outline-white outline-1",
         )}
