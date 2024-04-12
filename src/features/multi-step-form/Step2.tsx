@@ -1,26 +1,7 @@
-import { Link } from "react-router-dom"
 import StepHeader from "./StepHeader"
-import { Plan, togglePeriod, updatePlan } from "./multiStepFormSlice"
+import { Plan, plans, togglePeriod, updatePlan } from "./multiStepFormSlice"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { cn } from "../../lib/utils"
-
-const plans: Plan[] = [
-  {
-    name: "Arcade",
-    monthlyPrice: 9,
-    yearlyPrice: 99,
-  },
-  {
-    name: "Advanced",
-    monthlyPrice: 12,
-    yearlyPrice: 120,
-  },
-  {
-    name: "Pro",
-    monthlyPrice: 15,
-    yearlyPrice: 150,
-  },
-]
 
 const planIcons = [
   "/assets/images/icon-arcade.svg",

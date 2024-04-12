@@ -21,10 +21,28 @@ export interface AddOn {
 
 type MultiStepFormState = {
   personalInfo: PersonalInfo
-  plan?: Plan
+  plan: Plan
   addOns: AddOn[]
   period: "monthly" | "yearly"
 }
+
+export const plans: Plan[] = [
+  {
+    name: "Arcade",
+    monthlyPrice: 9,
+    yearlyPrice: 99,
+  },
+  {
+    name: "Advanced",
+    monthlyPrice: 12,
+    yearlyPrice: 120,
+  },
+  {
+    name: "Pro",
+    monthlyPrice: 15,
+    yearlyPrice: 150,
+  },
+]
 
 const initialState: MultiStepFormState = {
   personalInfo: {
@@ -32,7 +50,7 @@ const initialState: MultiStepFormState = {
     phone: "",
     email: "",
   },
-  plan: undefined,
+  plan: plans[0],
   addOns: [],
   period: "monthly",
 }
