@@ -81,8 +81,10 @@ function PlanCard({
   return (
     <div
       className={cn(
-        "outline outline-light-gray outline-1 p-4 rounded flex-1 flex flex-col items-start gap-8",
-        isSelected && "outline-2 outline-marine-blue bg-alabaster",
+        "cursor-pointer outline outline-light-gray outline-1 p-4 rounded flex-1 flex flex-col items-start gap-8",
+        isSelected
+          ? "outline-2 outline-marine-blue bg-alabaster"
+          : "hover:shadow-lg",
       )}
       onClick={onClick}
     >
