@@ -22,6 +22,12 @@ const plans: Plan[] = [
   },
 ]
 
+const planIcons = [
+  "/assets/images/icon-arcade.svg",
+  "/assets/images/icon-advanced.svg",
+  "/assets/images/icon-pro.svg",
+]
+
 function Step2() {
   const period = useAppSelector(state => state.multiStepForm.period)
   const selectedPlan = useAppSelector(state => state.multiStepForm.plan)
@@ -34,25 +40,42 @@ function Step2() {
         description="You have the option of monthly or yearly billing."
       />
       <div className="flex gap-4 my-4">
-        {plans.map(plan => (
+        {plans.map((plan, i) => (
           <PlanCard
             key={plan.name}
             plan={plan}
             isSelected={selectedPlan === plan}
+            iconPath={planIcons[i]}
             onClick={() => dispatch(updatePlan(plan))}
             period={period}
           />
         ))}
       </div>
-      <div>
-        <label htmlFor="period">Monthly | Yearly</label>
-        <input
-          type="checkbox"
-          name="period"
-          id="period"
-          checked={period === "monthly"}
-          onChange={() => dispatch(togglePeriod())}
-        />
+
+      <div className="flex justify-center mt-8 text-marine-blue">
+        <div className="flex items-center gap-4">
+          <span
+            className={period === "monthly" ? "font-bold" : "text-cool-gray"}
+          >
+            Monthly
+          </span>
+          {/* Switch */}
+          <button
+            className={cn(
+              "h-8 w-16 p-1 bg-marine-blue rounded-full flex items-center",
+              period === "yearly" && "justify-end",
+            )}
+            onClick={() => dispatch(togglePeriod())}
+          >
+            <div className="h-6 w-6 rounded-full bg-white"></div>
+          </button>
+
+          <span
+            className={period === "yearly" ? "font-bold" : "text-cool-gray"}
+          >
+            Yearly
+          </span>
+        </div>
       </div>
     </>
   )
@@ -63,12 +86,13 @@ interface PlanCardProps {
   period?: "monthly" | "yearly"
   isSelected?: boolean
   onClick?: () => void
-  icon?: React.ReactSVGElement
+  iconPath: string
 }
 
 function PlanCard({
   plan,
   isSelected = false,
+  iconPath,
   period,
   onClick,
 }: PlanCardProps) {
@@ -76,14 +100,24 @@ function PlanCard({
   return (
     <div
       className={cn(
-        isSelected && "text-white bg-blue-500",
-        "outline outline-2 p-4 rounded flex flex-col gap-4",
+        "outline outline-light-gray outline-1 p-4 rounded flex-1 flex flex-col items-start gap-8",
+        isSelected && "outline-2 outline-marine-blue bg-alabaster",
       )}
       onClick={onClick}
     >
-      <h3>{plan.name}</h3>
-      <p>${period === "monthly" ? plan.monthlyPrice : plan.yearlyPrice}</p>
-      {period === "yearly" && "2 months free"}
+      <img src={iconPath} role="presentation" className="h-12 w-12" />
+      <div>
+        <h3 className="text-lg font-bold text-marine-blue">{plan.name}</h3>
+        <p className="text-cool-gray">
+          $
+          {period === "monthly"
+            ? plan.monthlyPrice + "/mo"
+            : plan.yearlyPrice + "/yr"}
+        </p>
+        <p className="text-marine-blue">
+          {period === "yearly" && "2 months free"}
+        </p>
+      </div>
     </div>
   )
 }
