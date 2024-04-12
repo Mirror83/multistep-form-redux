@@ -64,7 +64,7 @@ function AddOnCard({
   onSelect,
 }: AddOnCardProps) {
   return (
-    <div className="outline outline-2 p-4 rounded flex justify-between items-center gap-4 w-full my-4">
+    <div className="outline outline-2 outline-marine-blue p-4 rounded flex justify-between items-center gap-4 w-full my-4">
       <div className="flex gap-4 items-center">
         <input
           type="checkbox"
