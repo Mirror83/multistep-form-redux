@@ -1,28 +1,6 @@
-import { Link } from "react-router-dom"
 import StepHeader from "./StepHeader"
-import { AddOn, updateAddOns } from "./multiStepFormSlice"
+import { AddOn, addOns, updateAddOns } from "./multiStepFormSlice"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-
-const addOns: AddOn[] = [
-  {
-    name: "Online service",
-    description: "Access to multiplayer games",
-    monthlyPrice: 1,
-    yearlyPrice: 10,
-  },
-  {
-    name: "Larger storage",
-    description: "Extra 1TB of cloud save",
-    monthlyPrice: 2,
-    yearlyPrice: 20,
-  },
-  {
-    name: "Customizable profile",
-    description: "Custom theme on your profile",
-    monthlyPrice: 2,
-    yearlyPrice: 20,
-  },
-]
 
 function Step3() {
   const selectedAddOns = useAppSelector(state => state.multiStepForm.addOns)
