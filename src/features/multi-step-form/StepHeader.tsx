@@ -5,7 +5,7 @@ interface StepHeaderProps {
 
 function StepHeader({ title, description }: StepHeaderProps) {
   return (
-    <div className="my-4 text-marine-blue">
+    <div className="my-4 text-marine-blue mb-8">
       <h1 className="text-4xl font-bold mb-2">{title}</h1>
       <p className="text-cool-gray">{description}</p>
     </div>
