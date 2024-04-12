@@ -30,9 +30,11 @@ function NavigationButtons({ className }: NavigationButtonsProps) {
           </button>
         </>
       ) : (
-        <button className="text-white bg-marine-blue rounded-md h-12 px-6">
-          <Link to={`/step-${currentStep + 1}`}>Next Step</Link>
-        </button>
+        <Link to={`/step-${currentStep + 1}`}>
+          <button className="text-white bg-marine-blue rounded-md h-12 px-6">
+            Next Step
+          </button>
+        </Link>
       )}
     </div>
   )
