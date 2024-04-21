@@ -7,8 +7,8 @@ function Sidebar() {
   const stepNumber = useStepNumber()
 
   return (
-    <div className="flex flex-col justify-between text-white rounded-lg relative">
-      <div className="flex flex-wrap flex-col gap-4 p-4 z-10">
+    <div className="bg-progress-background bg-cover bg-[center_85%] flex flex-col text-white md:rounded-lg">
+      <div className="h-[200px] md:h-auto flex flex-row items-start justify-center md:items-start md:justify-start md:flex-wrap md:flex-col gap-4 p-4">
         {steps.map((stepDescription, index) => (
           <SidebarComponent
             key={index}
@@ -19,13 +19,6 @@ function Sidebar() {
             }
           />
         ))}
-      </div>
-
-      <div className="absolute z-0 h-full w-full">
-        <img
-          src="/assets/images/bg-sidebar-desktop.svg"
-          className="object-cover h-full w-full rounded-lg"
-        />
       </div>
     </div>
   )
@@ -54,7 +47,7 @@ function SidebarComponent({
       >
         {step}
       </div>
-      <div className="uppercase">
+      <div className="hidden md:block uppercase">
         <p className="text-sm text-light-gray">Step {step}</p>
         <p className="font-bold ">{stepDescription}</p>
       </div>
