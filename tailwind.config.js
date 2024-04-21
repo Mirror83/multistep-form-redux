@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "progress-background": "url(/assets/images/bg-sidebar-desktop.svg)",
+      },
       colors: {
         // Primary
         "marine-blue": "hsl(213, 96%, 18%)",
