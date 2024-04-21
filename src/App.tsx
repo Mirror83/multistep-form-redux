@@ -1,10 +1,22 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import Sidebar from "./features/multi-step-form/Sidebar"
 import NavigationButtons from "./features/multi-step-form/NavigationButtons"
 import { useStepNumber } from "./features/multi-step-form/hooks"
+import { useAppSelector } from "./app/hooks"
+import { useEffect } from "react"
 
 function App() {
   const stepNumber = useStepNumber()
+  const personalInfoFormSubmitted = useAppSelector(
+    state => state.multiStepForm.personalInfoFormSubmitted,
+  )
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (stepNumber !== 1 && !personalInfoFormSubmitted) {
+      navigate("/")
+    }
+  }, [])
 
   return (
     <div className="min-w-screen min-h-screen flex items-center justify-center bg-magnolia">

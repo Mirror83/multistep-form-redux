@@ -21,6 +21,7 @@ export interface AddOn {
 
 type MultiStepFormState = {
   personalInfo: PersonalInfo
+  personalInfoFormSubmitted: boolean
   plan: Plan
   addOns: AddOn[]
   period: "monthly" | "yearly"
@@ -71,6 +72,7 @@ const initialState: MultiStepFormState = {
     phone: "",
     email: "",
   },
+  personalInfoFormSubmitted: false,
   plan: plans[0],
   addOns: [],
   period: "monthly",
@@ -89,13 +91,13 @@ export const multiStepFormSlice = createSlice({
     },
     updatePersonalInfo: (state, action: PayloadAction<PersonalInfo>) => {
       state.personalInfo = action.payload
+      state.personalInfoFormSubmitted = true
     },
     updatePlan: (state, action: PayloadAction<Plan>) => {
       state.plan = action.payload
     },
     updateAddOns: (state, action: PayloadAction<AddOn>) => {
       if (state.addOns.find(addOn => addOn.name === action.payload.name)) {
-        console.log("Removing")
         state.addOns = state.addOns.filter(
           addOn => addOn.name !== action.payload.name,
         )
