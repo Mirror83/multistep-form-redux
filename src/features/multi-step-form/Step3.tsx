@@ -1,6 +1,7 @@
 import StepHeader from "./StepHeader"
 import { AddOn, addOns, updateAddOns } from "./multiStepFormSlice"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { cn } from "@/lib/utils"
 
 function Step3() {
   const selectedAddOns = useAppSelector(state => state.multiStepForm.addOns)
@@ -42,11 +43,19 @@ function AddOnCard({
   onSelect,
 }: AddOnCardProps) {
   return (
-    <div className="outline outline-2 outline-marine-blue p-4 rounded flex justify-between items-center gap-4 w-full my-4">
+    <div
+      className={cn(
+        isSelected ? "outline-purplish-blue" : "outline-marine-blue",
+        "outline outline-2 p-4 rounded flex justify-between items-center gap-4 w-full my-4",
+      )}
+    >
       <div className="flex gap-4 items-center">
         <input
           type="checkbox"
-          className="w-6 h-6"
+          className="appearance-none w-6 h-6 border-2 rounded-md
+          checked:bg-purplish-blue checked:border-purplish-blue
+          checked:bg-[url('/assets/images/icon-checkmark.svg')] 
+          checked:bg-center checked:bg-contain checked:bg-no-repeat"
           checked={isSelected}
           onChange={onSelect}
         />
@@ -55,7 +64,7 @@ function AddOnCard({
           <p className="text-cool-gray">{addOn.description}</p>
         </div>
       </div>
-      <p className="text-marine-blue">
+      <p className="text-purplish-blue">
         $
         {period === "monthly"
           ? addOn.monthlyPrice + "/mo"
