@@ -3,28 +3,15 @@ import Sidebar from "./features/multi-step-form/Sidebar"
 import NavigationButtons from "./features/multi-step-form/NavigationButtons"
 import { useStepNumber } from "./features/multi-step-form/hooks"
 import { useAppSelector } from "./app/hooks"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 function App() {
   const stepNumber = useStepNumber()
   const personalInfoFormSubmitted = useAppSelector(
     state => state.multiStepForm.personalInfoFormSubmitted,
   )
+
   const navigate = useNavigate()
-
-  const mediaQueryList = window.matchMedia("(max-width: 640px)")
-
-  const [matches, setMatches] = useState(mediaQueryList.matches)
-
-  useEffect(() => {
-    const handleMediaQuery = (e: MediaQueryListEvent) => {
-      console.log(e.matches)
-      setMatches(e.matches)
-    }
-    mediaQueryList.addEventListener("change", handleMediaQuery)
-
-    return mediaQueryList.removeEventListener("change", handleMediaQuery)
-  }, [])
 
   useEffect(() => {
     if (stepNumber !== 1 && !personalInfoFormSubmitted) {
@@ -33,21 +20,20 @@ function App() {
   }, [])
 
   return (
-    <div className="min-w-screen min-h-screen bg-magnolia md:flex md:items-center md:justify-center">
-      <div className="relative md:w-8/12 md:min-w-[700px] md:h-5/6 md:min-h-[550px] md:rounded-lg md:grid md:grid-cols-[4fr_8fr] md:shadow-lg md:p-4 md:bg-white">
+    <div className="min-w-screen min-h-screen md:flex md:items-center md:justify-center">
+      <div className="relative md:w-9/12 md:min-w-[750px] md:h-5/6 md:min-h-[550px] md:rounded-lg md:grid md:grid-cols-[4fr_8fr] md:gap-8 md:shadow-lg md:p-4 md:bg-white">
         <Sidebar />
-        <section className="p-4 bg-white absolute md:relative top-24 md:top-0 mx-4 md:mx-0 rounded-lg md:rounded-none shadow-md md:shadow-none md:flex md:flex-wrap md:justify-center md:bg-inherit">
-          <div className="w-full md:w-5/6">
-            <Outlet />
+        <section className="flex justify-center md:flex md:flex-wrap md:justify-center md:bg-inherit">
+          <div className="absolute top-24 flex flex-col justify-between items-center min-h-[calc(100vh-6rem)] min-w-screen max-w-[640px] w-[95%] md:w-[5/6] md:min-h-max md:relative md:top-0 md:mx-0 md:rounded-none md:shadow-none">
+            <div className="bg-white w-full rounded-lg shadow-md p-4 md:rounded-none md:shadow-none mb-8 md:mb-0">
+              <Outlet />
+            </div>
+            {stepNumber !== 5 && (
+              <NavigationButtons className="self-end flex justify-between w-full p-4" />
+            )}
           </div>
-          {stepNumber !== 5 && !matches && (
-            <NavigationButtons className="flex justify-between self-end w-5/6 py-4" />
-          )}
         </section>
       </div>
-      {matches && (
-        <NavigationButtons className="absolute bottom-4 flex justify-between w-full py-4 px-8" />
-      )}
     </div>
   )
 }
