@@ -4,6 +4,7 @@ import NavigationButtons from "./features/multi-step-form/NavigationButtons"
 import { useStepNumber } from "./features/multi-step-form/hooks"
 import { useAppSelector } from "./app/hooks"
 import { useEffect } from "react"
+import { cn, STEP_5 } from "./lib/utils"
 
 function App() {
   const stepNumber = useStepNumber()
@@ -25,7 +26,13 @@ function App() {
         <Sidebar />
         <section className="flex justify-center md:flex md:flex-wrap md:justify-center md:bg-inherit">
           <div className="absolute top-24 flex flex-col justify-between items-center min-h-[calc(100vh-6rem)] min-w-screen max-w-[640px] w-[95%] md:w-[5/6] md:min-h-max md:relative md:top-0 md:mx-0 md:rounded-none md:shadow-none">
-            <div className="bg-white w-full rounded-lg shadow-md p-4 md:rounded-none md:shadow-none mb-8 md:mb-0">
+            <div
+              className={cn(
+                "bg-white w-full rounded-lg shadow-md p-4 md:rounded-none md:shadow-none mb-8 md:mb-0",
+                stepNumber === STEP_5 &&
+                  "flex items-center h-full py-16 md:py-0",
+              )}
+            >
               <Outlet />
             </div>
             {stepNumber !== 5 && (
