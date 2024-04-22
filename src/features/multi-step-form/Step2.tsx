@@ -20,7 +20,7 @@ function Step2() {
         title="Select your plan"
         description="You have the option of monthly or yearly billing."
       />
-      <div className="flex gap-4 my-4">
+      <div className="flex flex-col md:flex-row gap-4 my-4">
         {plans.map((plan, i) => (
           <PlanCard
             key={plan.name}
@@ -81,7 +81,7 @@ function PlanCard({
   return (
     <div
       className={cn(
-        "cursor-pointer outline outline-light-gray outline-1 p-4 rounded flex-1 flex flex-col items-start gap-8",
+        "cursor-pointer outline outline-light-gray outline-1 p-4 rounded flex-1 flex flex-row md:flex-col items-start gap-4 md:gap-8",
         isSelected
           ? "outline-2 outline-marine-blue bg-alabaster"
           : "hover:shadow-lg",
