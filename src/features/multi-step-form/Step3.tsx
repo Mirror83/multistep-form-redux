@@ -45,14 +45,16 @@ function AddOnCard({
   return (
     <div
       className={cn(
-        isSelected ? "outline-purplish-blue" : "outline-marine-blue",
+        isSelected
+          ? "outline-purplish-blue bg-magnolia"
+          : "outline-marine-blue",
         "outline outline-2 p-4 rounded flex justify-between items-center gap-4 w-full my-4",
       )}
     >
       <div className="flex gap-4 items-center">
         <input
           type="checkbox"
-          className="appearance-none w-6 h-6 border-2 rounded-md
+          className="appearance-none w-6 h-6 border-2 border-cool-gray rounded-md
           checked:bg-purplish-blue checked:border-purplish-blue
           checked:bg-[url('/assets/images/icon-checkmark.svg')] 
           checked:bg-center checked:bg-contain checked:bg-no-repeat"

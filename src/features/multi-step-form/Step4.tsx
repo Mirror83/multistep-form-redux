@@ -26,7 +26,7 @@ function Step4() {
         title="Finishing up"
         description="Double-check everything looks OK before confirming"
       />
-      <section className="bg-alabaster p-4 rounded">
+      <section className="bg-magnolia p-4 rounded">
         <div className="w-full flex items-center justify-between border-b-2 py-4">
           <div className="flex flex-col text-marine-blue">
             <p className="font-bold text-lg">

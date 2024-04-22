@@ -43,7 +43,7 @@ function SidebarComponent({
         className={cn(
           "flex items-center justify-center w-8 h-8 rounded-full",
           isCurrentStep
-            ? "bg-pastel-blue text-black outline-8 outline-pastel-blue"
+            ? "bg-light-blue text-black outline-8 outline-light-blue"
             : "outline outline-white outline-1",
         )}
       >
