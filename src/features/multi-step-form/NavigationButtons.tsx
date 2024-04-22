@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useStepNumber } from "./hooks"
+import { STEP_1, STEP_2, STEP_5 } from "@/lib/utils"
 
 interface NavigationButtonsProps {
   className?: string
@@ -10,16 +11,16 @@ function NavigationButtons({ className }: NavigationButtonsProps) {
 
   return (
     <div className={className}>
-      {currentStep > 1 && currentStep !== 5 && (
+      {currentStep > STEP_1 && currentStep !== STEP_5 && (
         <>
           <button className="text-purplish-blue rounded-lg">
-            <Link to={currentStep > 2 ? `/step-${currentStep - 1}` : "/"}>
+            <Link to={currentStep > STEP_2 ? `/step-${currentStep - 1}` : "/"}>
               Go Back
             </Link>
           </button>
         </>
       )}
-      {currentStep === 1 ? (
+      {currentStep === STEP_1 ? (
         <>
           <div></div>
           <button

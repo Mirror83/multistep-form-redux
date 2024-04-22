@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn, STEP_3, STEP_5 } from "@/lib/utils"
 import { useStepNumber } from "./hooks"
 
 const steps = ["Your info", "Select Plan", "Add-ons", "Summary"]
@@ -15,7 +15,9 @@ function Sidebar() {
             step={index + 1}
             stepDescription={stepDescription}
             isCurrentStep={
-              stepNumber === 5 && index === 3 ? true : stepNumber === index + 1
+              stepNumber === STEP_5 && index === STEP_3
+                ? true
+                : stepNumber === index + 1
             }
           />
         ))}
