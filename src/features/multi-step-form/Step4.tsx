@@ -7,12 +7,12 @@ function Step4() {
 
   let total = 0
   if (period === "monthly") {
-    total += plan?.monthlyPrice ?? 0
+    total += plan.monthlyPrice
     addOns.forEach(addOn => {
       total += addOn.monthlyPrice
     })
   } else {
-    total += plan?.yearlyPrice ?? 0
+    total += plan.yearlyPrice
     addOns.forEach(addOn => {
       total += addOn.yearlyPrice
     })
@@ -30,7 +30,7 @@ function Step4() {
         <div className="w-full flex items-center justify-between border-b-2 py-4">
           <div className="flex flex-col text-marine-blue">
             <p className="font-bold text-lg">
-              {plan?.name} <span className="capitalize">({period})</span>
+              {plan.name} <span className="capitalize">({period})</span>
             </p>
             <Link to="/step-2" className="underline">
               Change
@@ -39,8 +39,8 @@ function Step4() {
           <strong className="font-bold text-lg text-marine-blue">
             $
             {period === "monthly"
-              ? plan?.monthlyPrice + "/mo"
-              : plan?.yearlyPrice + "/yr"}
+              ? plan.monthlyPrice + "/mo"
+              : plan.yearlyPrice + "/yr"}
           </strong>
         </div>
         <div>
