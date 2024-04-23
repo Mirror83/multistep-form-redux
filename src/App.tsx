@@ -27,7 +27,7 @@ function App() {
         <section className="flex justify-center md:flex md:flex-wrap md:justify-center md:bg-inherit">
           {/** The calculation of min-h (calc(100vh - 6rem)) removes the 6rem that was added by top-24 to the height.*/}
           <div className="absolute top-24 flex flex-col justify-between items-center min-h-[calc(100vh-6rem)] min-w-screen max-w-[640px] md:w-[95%] md:min-h-max md:relative md:top-0 md:mx-0 md:rounded-none md:shadow-none">
-            <div
+            <main
               className={cn(
                 "bg-white w-[95%] rounded-lg shadow-md p-4 md:rounded-none md:shadow-none mb-8 md:mb-0",
                 stepNumber === STEP_5 &&
@@ -35,7 +35,7 @@ function App() {
               )}
             >
               <Outlet />
-            </div>
+            </main>
             {stepNumber !== 5 && (
               <NavigationButtons className="bg-white self-end flex justify-between w-full p-4" />
             )}
