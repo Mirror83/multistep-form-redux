@@ -25,6 +25,7 @@ function App() {
       <div className="relative md:w-9/12 md:min-w-[750px] md:h-5/6 md:min-h-[550px] md:rounded-lg md:grid md:grid-cols-[4fr_8fr] md:gap-8 md:shadow-lg md:p-4 md:bg-white">
         <Sidebar />
         <section className="flex justify-center md:flex md:flex-wrap md:justify-center md:bg-inherit">
+          {/** The calculation of min-h (calc(100vh - 6rem)) removes the 6rem that was added by top-24 to the height.*/}
           <div className="absolute top-24 flex flex-col justify-between items-center min-h-[calc(100vh-6rem)] min-w-screen max-w-[640px] md:w-[95%] md:min-h-max md:relative md:top-0 md:mx-0 md:rounded-none md:shadow-none">
             <div
               className={cn(
