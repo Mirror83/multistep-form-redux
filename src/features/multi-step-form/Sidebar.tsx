@@ -7,7 +7,7 @@ function Sidebar() {
   const stepNumber = useStepNumber()
 
   return (
-    <div className="bg-progress-background bg-cover bg-[center_85%] flex flex-col text-white md:rounded-lg">
+    <aside className="bg-progress-background bg-cover bg-[center_85%] flex flex-col text-white md:rounded-lg">
       <div className="h-[200px] gap-4 pt-8 flex flex-row items-start justify-center md:items-start md:justify-start md:flex-wrap md:flex-col md:p-4 md:h-auto">
         {steps.map((stepDescription, index) => (
           <SidebarComponent
@@ -22,7 +22,7 @@ function Sidebar() {
           />
         ))}
       </div>
-    </div>
+    </aside>
   )
 }
 
