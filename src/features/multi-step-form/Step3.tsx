@@ -48,18 +48,18 @@ function AddOnCard({
         isSelected
           ? "outline-purplish-blue bg-magnolia"
           : "outline-marine-blue",
-        "outline outline-2 p-4 rounded flex justify-between items-center gap-4 w-full my-4",
+        "outline outline-1 hover:outline-purplish-blue cursor-pointer p-4 rounded flex justify-between items-center gap-4 w-full my-4",
       )}
+      onClick={onSelect}
     >
       <div className="flex gap-4 items-center">
         <input
           type="checkbox"
-          className="appearance-none w-6 h-6 border-2 border-cool-gray rounded-md
+          className="appearance-none cursor-pointer w-6 h-6 border-2 border-cool-gray rounded-md
           checked:bg-purplish-blue checked:border-purplish-blue
           checked:bg-[url('/assets/images/icon-checkmark.svg')] 
           checked:bg-center checked:bg-contain checked:bg-no-repeat"
           checked={isSelected}
-          onChange={onSelect}
         />
         <div className="flex flex-col">
           <h3 className="text-lg font-bold text-marine-blue">{addOn.name}</h3>
@@ -67,7 +67,7 @@ function AddOnCard({
         </div>
       </div>
       <p className="text-purplish-blue">
-        $
+        +$
         {period === "monthly"
           ? addOn.monthlyPrice + "/mo"
           : addOn.yearlyPrice + "/yr"}
