@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { useStepNumber } from "./hooks"
 import { cn, STEP_1, STEP_2, STEP_4, STEP_5 } from "@/lib/utils"
+import { useAppDispatch } from "@/app/hooks"
+import { submitAllDetails } from "./multiStepFormSlice"
 
 interface NavigationButtonsProps {
   className?: string
@@ -8,6 +10,7 @@ interface NavigationButtonsProps {
 
 function NavigationButtons({ className }: NavigationButtonsProps) {
   const currentStep = useStepNumber()
+  const dispatch = useAppDispatch()
 
   return (
     <div className={className}>
@@ -37,6 +40,9 @@ function NavigationButtons({ className }: NavigationButtonsProps) {
               "text-white bg-marine-blue rounded-md h-12 w-28",
               currentStep === STEP_4 && "hover:bg-pastel-blue",
             )}
+            onClick={() => {
+              if (currentStep === STEP_4) dispatch(submitAllDetails())
+            }}
           >
             {currentStep === STEP_4 ? "Confirm" : "Next Step"}
           </button>
