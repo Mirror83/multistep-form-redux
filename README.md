@@ -6,12 +6,8 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 
 **Almost complete**.
 
-The mobile and desktop layout have been completed. The state management for the steps is working well and the form validation for step 1 is also OK.
-
 All that is left is:
 
-- Matching the colours to the design to the best of my ability
-- Ensuring that one cannot use the url bar (as I am using a router to move from one step to another) to skip over some steps. This has been done for step 1, but I would like to do it for the rest of the steps.
 - Adding the Ubuntu font to the project. I forgot to do this since I am developing the project on Ubuntu 22.04 LTS where Ubuntu is (not surprisinlgy) the default font.
 
 ## Table of contents
@@ -56,7 +52,7 @@ Users should be able to:
 
 ### Links
 
-Will be placed after deployment and subsequent submission of solution to Frontend Mentor.
+Deployed application - https://multistep-form-redux.vercel.app/
 
 ## My process
 
