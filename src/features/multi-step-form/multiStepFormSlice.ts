@@ -22,6 +22,7 @@ export interface AddOn {
 type MultiStepFormState = {
   personalInfo: PersonalInfo
   personalInfoFormSubmitted: boolean
+  allDetailsSubmitted: boolean
   plan: Plan
   addOns: AddOn[]
   period: "monthly" | "yearly"
@@ -73,6 +74,7 @@ const initialState: MultiStepFormState = {
     email: "",
   },
   personalInfoFormSubmitted: false,
+  allDetailsSubmitted: false,
   plan: plans[0],
   addOns: [],
   period: "monthly",
@@ -105,8 +107,16 @@ export const multiStepFormSlice = createSlice({
         state.addOns.push(action.payload)
       }
     },
+    submitAllDetails: state => {
+      state.allDetailsSubmitted = true
+    },
   },
 })
 
-export const { togglePeriod, updatePersonalInfo, updatePlan, updateAddOns } =
-  multiStepFormSlice.actions
+export const {
+  togglePeriod,
+  updatePersonalInfo,
+  updatePlan,
+  updateAddOns,
+  submitAllDetails,
+} = multiStepFormSlice.actions
