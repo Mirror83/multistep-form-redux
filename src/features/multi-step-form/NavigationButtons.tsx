@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useStepNumber } from "./hooks"
-import { STEP_1, STEP_2, STEP_5 } from "@/lib/utils"
+import { cn, STEP_1, STEP_2, STEP_4, STEP_5 } from "@/lib/utils"
 
 interface NavigationButtonsProps {
   className?: string
@@ -25,15 +25,20 @@ function NavigationButtons({ className }: NavigationButtonsProps) {
           <div></div>
           <button
             form="personal-info-form"
-            className="text-white bg-marine-blue rounded-md h-12 px-6"
+            className="text-white bg-marine-blue rounded-md h-12 w-28"
           >
             Next Step
           </button>
         </>
       ) : (
         <Link to={`/step-${currentStep + 1}`}>
-          <button className="text-white bg-marine-blue rounded-md h-12 px-6">
-            Next Step
+          <button
+            className={cn(
+              "text-white bg-marine-blue rounded-md h-12 w-28",
+              currentStep === STEP_4 && "hover:bg-pastel-blue",
+            )}
+          >
+            {currentStep === STEP_4 ? "Confirm" : "Next Step"}
           </button>
         </Link>
       )}
