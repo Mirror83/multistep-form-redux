@@ -18,8 +18,6 @@ function Step4() {
     })
   }
 
-  console.log(total)
-
   return (
     <>
       <StepHeader
@@ -32,7 +30,7 @@ function Step4() {
             <p className="font-bold text-lg">
               {plan.name} <span className="capitalize">({period})</span>
             </p>
-            <Link to="/step-2" className="underline">
+            <Link to="/step-2" className="underline hover:text-purplish-blue">
               Change
             </Link>
           </div>
