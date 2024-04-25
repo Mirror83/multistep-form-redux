@@ -1,4 +1,20 @@
+import { useAppSelector } from "@/app/hooks"
+import { useEffect } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+
 function Step5() {
+  const allDetailsSubmitted = useAppSelector(
+    state => state.multiStepForm.allDetailsSubmitted,
+  )
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (!allDetailsSubmitted) {
+      if (location.key) navigate(-1)
+      else navigate("")
+    }
+  }, [])
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       <img
