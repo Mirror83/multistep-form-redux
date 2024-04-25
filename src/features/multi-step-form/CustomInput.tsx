@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils"
 import {
   FieldError,
   FieldErrorsImpl,
@@ -43,7 +44,10 @@ function CustomInput({
       </div>
 
       <input
-        className="text-marine-blue outline outline-1 p-2 rounded"
+        className={cn(
+          "outline outline-1 focus:outline-purplish-blue outline-light-gray p-2 rounded",
+          errors && "outline-strawberry-red",
+        )}
         type={type}
         id={id}
         placeholder={placeholder}
