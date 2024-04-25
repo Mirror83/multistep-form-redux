@@ -13,7 +13,7 @@ function NavigationButtons({ className }: NavigationButtonsProps) {
     <div className={className}>
       {currentStep > STEP_1 && currentStep !== STEP_5 && (
         <>
-          <button className="text-cool-gray rounded-lg">
+          <button className="text-cool-gray hover:text-marine-blue rounded-lg">
             <Link to={currentStep > STEP_2 ? `/step-${currentStep - 1}` : "/"}>
               Go Back
             </Link>
