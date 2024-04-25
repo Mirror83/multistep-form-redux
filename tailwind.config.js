@@ -1,8 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme")
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Ubuntu", ...defaultTheme.fontFamily.sans],
+      },
       backgroundImage: {
         "progress-background": "url(/assets/images/bg-sidebar-desktop.svg)",
       },
