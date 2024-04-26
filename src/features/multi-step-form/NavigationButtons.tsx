@@ -38,7 +38,7 @@ function NavigationButtons({ className }: NavigationButtonsProps) {
           <button
             className={cn(
               "text-white bg-marine-blue rounded-md h-12 w-28",
-              currentStep === STEP_4 && "hover:bg-pastel-blue",
+              currentStep === STEP_4 && "active:bg-pastel-blue",
             )}
             onClick={() => {
               if (currentStep === STEP_4) dispatch(submitAllDetails())
