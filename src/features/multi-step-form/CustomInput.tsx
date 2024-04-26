@@ -31,9 +31,9 @@ function CustomInput({
   errors,
 }: CustomInputProps) {
   return (
-    <div className="flex flex-col flex-wrap gap-1 my-4">
+    <div className="flex flex-col flex-wrap gap-1 my-4 text-marine-blue">
       <div className="flex flex-wrap justify-between">
-        <label htmlFor={id} className="text-marine-blue font-bold">
+        <label htmlFor={id} className="text-sm">
           {label}
         </label>
         {errors && (
@@ -45,7 +45,7 @@ function CustomInput({
 
       <input
         className={cn(
-          "outline outline-1 focus:outline-purplish-blue outline-light-gray p-2 rounded",
+          "font-medium outline outline-1 focus:outline-purplish-blue outline-light-gray p-3 rounded",
           errors && "outline-strawberry-red",
         )}
         type={type}
