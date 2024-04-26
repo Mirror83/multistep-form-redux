@@ -4,11 +4,7 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 
 ## Progress
 
-**Almost complete**.
-
-All that is left is:
-
-- Adding the Ubuntu font to the project. I forgot to do this since I am developing the project on Ubuntu 22.04 LTS where Ubuntu is (not surprisinlgy) the default font.
+**Complete**.
 
 ## Table of contents
 
@@ -52,6 +48,7 @@ Users should be able to:
 ### Links
 
 [Deployed application](https://multistep-form-redux.vercel.app/)
+
 [Frontend Mentor solution](https://www.frontendmentor.io/solutions/multistep-form-using-react-react-router-redux-and-tailwind-css-h4XGni7zhk)
 
 ## My process
@@ -77,7 +74,7 @@ The final step is to match the colours of the design to each element. (Where I a
 - CSS Grid
 - [Tailwind CSS](https://tailwindcss.com/)
 - Desktop-first workflow
-- [TypeScript]()
+- [TypeScript](https://www.typescriptlang.org/)
 - [React](https://react.dev/) - JS library
 - [Redux](https://reduxjs.org) - State management library
 
