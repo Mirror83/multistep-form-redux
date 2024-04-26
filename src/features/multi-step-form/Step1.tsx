@@ -27,7 +27,6 @@ function Step1() {
       <form
         id="personal-info-form"
         onSubmit={handleSubmit(data => {
-          console.log(data)
           dispatch(updatePersonalInfo(data as PersonalInfo))
           navigate("/step-2")
         })}

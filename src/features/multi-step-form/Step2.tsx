@@ -77,7 +77,6 @@ function PlanCard({
   period,
   onClick,
 }: PlanCardProps) {
-  console.log(period)
   return (
     <div
       className={cn(
